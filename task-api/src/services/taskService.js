@@ -8,7 +8,7 @@ const findById = (id) => tasks.find((t) => t.id === id);
 
 //The original code used includes which checked if the status contained the letters as a substring
 //This caused a search for do to return both todo and done tasks
-//I changed this to check for an exact match
+//I changed this to check for an exact match.
 const getByStatus = (status) => tasks.filter((t) => t.status === status);
 
 //Because page numbers start at 1 for users, multiplying page by limit was skipping the entire first page of results

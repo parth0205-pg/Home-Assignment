@@ -2,7 +2,7 @@ const VALID_STATUSES = ['todo', 'in_progress', 'done'];
 const VALID_PRIORITIES = ['low', 'medium', 'high'];
 
 //I noticed the app crashed with a 500 error whenever a request body was empty or not an object
-//I added a quick check here to make sure we actually received a valid JSON object before trying to read properties from it
+//I added a quick check here to make sure we actually received a valid JSON object before trying to read properties from it.
 const validateCreateTask = (body) => {
   if (!body || typeof body !== 'object' || Array.isArray(body)) {
     return 'request body must be a valid JSON object';

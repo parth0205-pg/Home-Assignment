@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-// Root endpoint for health check and basic API info
+// Root endpoint for health check and basic API info.
 app.get('/', (req, res) => {
   res.json({
     status: 'online',

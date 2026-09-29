@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const taskService = require('../services/taskService');
 
-//I imported our new assignee validator function here so the assign route can use it without triggering an undefined reference error.
+//I imported our new assignee validator function here so the assign route can use it without triggering an undefined reference error
 const {
   validateCreateTask,
   validateUpdateTask,
