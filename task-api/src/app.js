@@ -4,6 +4,16 @@ const taskRoutes = require('./routes/tasks');
 const app = express();
 
 app.use(express.json());
+app.get('/', (req, res) => {
+  res.json({
+    status: 'online',
+    message: 'Task API is running smoothly',
+    endpoints: {
+      tasks: '/tasks',
+      stats: '/tasks/stats',
+    },
+  });
+});
 app.use('/tasks', taskRoutes);
 
 //I added this custom error handler to catch invalid JSON formatting before it crashes the server
