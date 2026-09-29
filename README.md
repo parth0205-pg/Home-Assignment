@@ -76,7 +76,7 @@ npm run coverage
   "createdAt": "ISO 8601 string",
   "assignee": "string | null"
 }
-
+```
 ---
 
 ## What Was Done
