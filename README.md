@@ -111,3 +111,20 @@ See [ASSIGNMENT.md](./ASSIGNMENT.md) for full submission requirements. At minimu
 - **Bug report** — what you found, where in the code, and why it's a bug (not just symptoms)
 - **At least one fix** — with a note on your approach
 - **`PATCH /tasks/:id/assign` implementation** — plus a short explanation of any design decisions (validation, edge cases, etc.)
+
+## Reviewer Notes
+
+### Feature Design Decisions (`PATCH /tasks/:id/assign`):
+- **Validation**: Enforces non-empty string format; rejects missing keys and whitespace-only payloads with `400 Bad Request`.
+- **Reassignment**: Allows reassigning already assigned tasks directly, matching standard issue-tracker behavior (e.g., Jira, GitHub).
+
+### Surprises in the Codebase:
+- The `README.md` documented status enums as `pending | in-progress | completed`, while the actual codebase enforced `todo | in_progress | done`.
+
+### What I'd Test Next with More Time:
+- Concurrency testing for simultaneous state updates on the in-memory array.
+- Rate limiting and payload size limits with Express middleware.
+
+### Questions Before Shipping to Production:
+- Which persistent database (e.g., PostgreSQL or MongoDB) will replace the in-memory store?
+- Should assignee strings be validated against an authenticated users table/service?
