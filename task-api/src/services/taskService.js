@@ -8,9 +8,15 @@ const findById = (id) => tasks.find((t) => t.id === id);
 
 const getByStatus = (status) => tasks.filter((t) => t.status.includes(status));
 
-const getPaginated = (page, limit) => {
-  const offset = page * limit;
-  return tasks.slice(offset, offset + limit);
+/*Error: Page queries are 1-indexed (page=1 represents the first page). By calculating offset = page * limit, requesting page = 1 with limit = 10 evaluates to 1 * 10 = 10. The service slices from index 10 to 20, skipping items 0 through 9 entirely*/
+
+/*Solution: I updated getPaginated to use the standard 1-indexed formula (page - 1) * limit, while adding a Math.max(1, page) safety check to guard against zero or negative page inputs:*/
+
+const getPaginated = (page, limit, taskList = tasks) => {
+  const safePage = Math.max(1, page);
+  const safeLimit = Math.max(1, limit);
+  const offset = (safePage - 1) * safeLimit;
+  return taskList.slice(offset, offset + safeLimit);
 };
 
 const getStats = () => {
