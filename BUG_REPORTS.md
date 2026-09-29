@@ -16,7 +16,7 @@
 - **Location**: `src/services/taskService.js` inside `getByStatus`
 - **Expected**: `?status=do` should match only exact status values.
 - **Actual**: Used `.includes()`, causing `?status=do` to match both `todo` and `done`.
-- **Fix**: Replaced `.includes()` with exact equality `===`.
+- **Fix**: Replaced `.includes()` with exact equality `===`
 
 ### Bug 4: Immutable Fields Overwritten on PUT
 - **Location**: `src/services/taskService.js` inside `update`
